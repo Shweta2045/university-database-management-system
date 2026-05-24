@@ -125,7 +125,7 @@ Stores student details.
 
 # 📚 SQL Queries
 
-## 🔹 List All Students
+## 1. List All Students
 
 ```sql
 SELECT * FROM Students;
@@ -134,7 +134,7 @@ SELECT * FROM Students;
 
 ---
 
-## 🔹 List CS students (WHERE).
+## 2. List CS students (WHERE).
 
 ```sql
 SELECT StudentID, StudentName, Dept, Year, GPA
@@ -145,7 +145,7 @@ WHERE Dept = 'CS';
 
 ---
 
-## 🔹 Students with GPA ≥ 8.5 (comparison).
+## 3. Students with GPA ≥ 8.5 (comparison).
 
 ```sql
 SELECT StudentName, Dept, GPA
@@ -157,7 +157,7 @@ ORDER BY GPA DESC;
 
 ---
 
-## 🔹 Faculty hired after 2016 (date filter).
+## 4. Faculty hired after 2016 (date filter).
 
 ```sql
 SELECT FacultyName, Dept, HireDate
@@ -181,7 +181,7 @@ ORDER BY Dept, CourseName;
 
 ##  B) BETWEEN / IN / AND / OR-- 
 
--- 6.Students with GPA between 8.0 and 9.5.
+# 6.Students with GPA between 8.0 and 9.5.
 ```
 SELECT StudentName, Dept, GPA
 FROM Students
@@ -190,7 +190,7 @@ ORDER BY GPA DESC;
 ```
 <img width="1148" height="690" alt="image" src="https://github.com/user-attachments/assets/4de3b90c-0b51-4864-b1db-d033fb3ea975" />
 
--- 7.Faculty in CS or Math (IN).
+# 7.Faculty in CS or Math (IN).
 ```
 SELECT FacultyName, Dept
 FROM Faculty
@@ -199,7 +199,7 @@ ORDER BY Dept, FacultyName;
 ```
 <img width="1146" height="660" alt="image" src="https://github.com/user-attachments/assets/baa96f46-867d-465f-94b2-aeb904ca29e8" />
 
--- 8.ECE students in Year 2 or 4 (AND + IN).
+#  8.ECE students in Year 2 or 4 (AND + IN).
 ```
 SELECT StudentName, Dept, Year
 FROM Students
@@ -207,7 +207,7 @@ WHERE Dept = 'ECE' AND Year IN (2,4);
 ```
 <img width="1151" height="708" alt="image" src="https://github.com/user-attachments/assets/2bdadceb-efd0-4d73-afa1-57a5fed18bd3" />
 
--- 9.Students from CS or ECE with GPA > 8.0 (OR + AND).
+# 9.Students from CS or ECE with GPA > 8.0 (OR + AND).
 ```
 SELECT StudentName, Dept, GPA
 FROM Students
@@ -216,7 +216,7 @@ WHERE (Dept = 'CS' OR Dept = 'ECE')
 ```
 <img width="1152" height="710" alt="image" src="https://github.com/user-attachments/assets/25196f91-c068-4b74-b69c-6a5160107286" />
 
--- 10.Faculty with salary NOT between 115k and 140k.
+# 10.Faculty with salary NOT between 115k and 140k.
 ```
 SELECT FacultyName, Dept, Salary
 FROM Faculty
@@ -225,9 +225,9 @@ ORDER BY Salary DESC;
 ```
 <img width="1156" height="706" alt="image" src="https://github.com/user-attachments/assets/cd605a47-a9ec-444b-9fd5-eb661d2b1f80" />
 
-                      -- C) LIKE (pattern matching)-- 
+##  C) LIKE (pattern matching) 
 
-11.Students whose name starts with 'A' or ends with 'a'.
+# 11.Students whose name starts with 'A' or ends with 'a'.
 ```
 SELECT StudentName
 FROM Students
@@ -235,7 +235,7 @@ WHERE StudentName LIKE 'A%' OR StudentName LIKE '%a';
 ```
 <img width="1157" height="691" alt="image" src="https://github.com/user-attachments/assets/750369c5-a8e9-4306-b863-353bd250198d" />
 
--- 12.Courses containing 'Data' or 'Math' in name.
+# 12.Courses containing 'Data' or 'Math' in name.
 ```
 SELECT CourseName, Dept
 FROM Courses
@@ -243,9 +243,9 @@ WHERE CourseName LIKE '%Data%' OR CourseName LIKE '%Math%';
 ```
 <img width="1153" height="695" alt="image" src="https://github.com/user-attachments/assets/e343876e-d6ed-4cd7-85ff-dbfc77ec2da9" />
 
--- D) JOINS (based on foreign keys)
+## D) JOINS (based on foreign keys)
 
--- 13.List each course with its instructor.
+# 13.List each course with its instructor.
 ```
 SELECT c.CourseID, c.CourseName, c.Dept AS CourseDept,
        f.FacultyName AS Instructor, f.Dept AS FacultyDept
@@ -255,7 +255,7 @@ ORDER BY c.CourseID;
 ```
 <img width="1146" height="695" alt="image" src="https://github.com/user-attachments/assets/8ff8fbe8-e17a-40da-a074-fc191df54f58" />
 
--- 14.List each student with their advisor’s name and department.
+#  14.List each student with their advisor’s name and department.
 ```
 SELECT s.StudentID, s.StudentName, s.Dept AS StudentDept,
        f.FacultyName AS AdvisorName, f.Dept AS AdvisorDept
@@ -265,7 +265,7 @@ ORDER BY s.StudentID;
 ```
 <img width="1141" height="692" alt="image" src="https://github.com/user-attachments/assets/56b92716-3461-454e-be69-e87c77e24c2b" />
 
--- 15.Courses taught by Math faculty only.
+# 15.Courses taught by Math faculty only.
 ```
 SELECT c.CourseID, c.CourseName, c.Dept, f.FacultyName
 FROM Courses c
@@ -274,7 +274,7 @@ WHERE f.Dept = 'Math';
 ```
 <img width="1158" height="697" alt="image" src="https://github.com/user-attachments/assets/bae4c045-05b4-4e44-a7ca-a2091aab46f5" />
 
--- 16.Students advised by CS faculty (cross-dept advising).
+#  16.Students advised by CS faculty (cross-dept advising).
 ```
 SELECT s.StudentName, s.Dept AS StudentDept, f.FacultyName AS Advisor, f.Dept AS AdvisorDept
 FROM Students s
@@ -285,7 +285,7 @@ WHERE f.Dept = 'CS';
 
            -- E) GROUP BY / Aggregation / HAVING-- 
 
--- 17.Count of students per department.
+#  17.Count of students per department.
 ```
 SELECT Dept, COUNT(*) AS NumStudents
 FROM Students
@@ -295,7 +295,7 @@ ORDER BY NumStudents DESC;
 <img width="1157" height="707" alt="image" src="https://github.com/user-attachments/assets/018883ef-9432-4535-b40a-b5d149ef76cc" />
 
 
--- 18.Average GPA per department (rounded).
+# 18.Average GPA per department (rounded).
 ```
 SELECT Dept, ROUND(AVG(GPA), 2) AS AvgGPA
 FROM Students
@@ -305,7 +305,7 @@ ORDER BY AvgGPA DESC;
 <img width="1148" height="697" alt="image" src="https://github.com/user-attachments/assets/eba1da21-d0b9-4bb4-b5d8-fde056f42db1" />
 
 
--- 19.Departments with more than 2 students (HAVING).
+# 19.Departments with more than 2 students (HAVING).
 ```
 SELECT Dept, COUNT(*) AS NumStudents
 FROM Students
@@ -314,7 +314,7 @@ HAVING COUNT(*) > 2;
 ```
 <img width="1145" height="703" alt="image" src="https://github.com/user-attachments/assets/1956406a-79a7-45ba-8d82-1a5bedad64a5" />
 
--- 20.Average salary by faculty department where avg > 125k (HAVING).
+# 20.Average salary by faculty department where avg > 125k (HAVING).
 ```
 SELECT Dept, ROUND(AVG(Salary), 2) AS AvgSalary
 FROM Faculty
@@ -324,7 +324,7 @@ ORDER BY AvgSalary DESC;
 ```
 <img width="1162" height="677" alt="image" src="https://github.com/user-attachments/assets/331fe08d-49ce-4a1d-9ba6-9daedd43224c" />
 
--- 21.Number of courses per instructor (GROUP BY on join).
+# 21.Number of courses per instructor (GROUP BY on join).
 ```
 SELECT f.FacultyName, f.Dept, COUNT(*) AS CourseCount
 FROM Faculty f
@@ -335,7 +335,7 @@ ORDER BY CourseCount DESC, f.FacultyName;
 <img width="1152" height="671" alt="image" src="https://github.com/user-attachments/assets/88cd38a7-9e46-4ce3-8963-93074730873c" />
 
                        -- F) Subqueries (scalar / IN / EXISTS)-- 
--- 22.Students with GPA above overall average GPA (scalar subquery).
+# 22.Students with GPA above overall average GPA (scalar subquery).
 ```
 SELECT StudentName, Dept, GPA
 FROM Students
@@ -344,7 +344,7 @@ ORDER BY GPA DESC;
 ```
 <img width="1160" height="670" alt="image" src="https://github.com/user-attachments/assets/6e90a163-7140-4c95-a439-8231bd488ea1" />
 
--- 23.Courses taught by faculty earning above department’s average salary (correlated subquery).
+# 23.Courses taught by faculty earning above department’s average salary (correlated subquery).
 ```
 SELECT c.CourseID, c.CourseName, f.FacultyName, f.Dept, f.Salary
 FROM Courses c
@@ -356,7 +356,7 @@ ORDER BY f.Dept, f.Salary DESC;
 ```
 <img width="1155" height="677" alt="image" src="https://github.com/user-attachments/assets/e2d39cd1-0c5e-404c-9298-3241c026b842" />
 
--- 24.Students whose advisor is in CS (IN with subquery).
+# 24.Students whose advisor is in CS (IN with subquery).
 ```
 SELECT StudentName, Dept, AdvisorID
 FROM Students
@@ -364,7 +364,7 @@ WHERE AdvisorID IN (SELECT FacultyID FROM Faculty WHERE Dept = 'CS');
 ```
 <img width="1165" height="672" alt="image" src="https://github.com/user-attachments/assets/5e9fed8b-07f6-4d45-b329-9a96ce651187" />
 
--- 25.List departments that have both students and at least one course (EXISTS with subqueries).
+# 25.List departments that have both students and at least one course (EXISTS with subqueries).
 ```
 SELECT DISTINCT s.Dept
 FROM Students s
@@ -386,23 +386,6 @@ WHERE EXISTS (SELECT 1 FROM Courses c WHERE c.Dept = s.Dept);
 
 
 
----
-
-# 📁 Folder Structure
-
-```text
-University-Database-Project/
-│
-├── README.md
-├── university_database.sql
-├── screenshots/
-│   ├── students_table.png
-│   ├── faculty_table.png
-│   ├── joins_output.png
-│   └── aggregate_output.png
-```
-
----
 
 
 
